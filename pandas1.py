@@ -1,5 +1,8 @@
+#### Pandas Series ####
+
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 ### How to create a Series?
 
@@ -172,11 +175,10 @@ sub_marks_dict = {
     "english":45
 }
 sub_marks = pd.Series(sub_marks_dict, name="Tejas's Sub & Marks", dtype=np.int16)
-sub_marks['economics'] = 150
+sub_marks['economics'] = 70
 sub_marks[1] = 100 # this doesn't change the value of economics to 100, it adds another key value pair with key 1 and value = 100. Using indexing to change value doesn't work. You should use key to change the value
 sub_marks['social studies'] = 10 # this adds a new item social studies with 10 marks
 print("",sub_marks,sep="\n")
-
 
 runs = [2,312,65,86,756]
 r_series = pd.Series(runs)
@@ -190,3 +192,65 @@ bolly_data['Hum Tumhare Hain Sanam'] = "Tejas Sir"
 print("",bolly_data,sep="\n")
 
 
+
+#### Series with Python Functionalities ####
+
+print(len(subs_data))
+print(type(subs_data))
+print(dir(subs_data))
+print(sorted(subs_data, reverse=True)) # stores in the list
+print(min(subs_data))
+print(max(subs_data))
+
+print(list(sub_marks))
+print(dict(sub_marks))
+# print(dict(bolly_data))
+
+print('Why Cheat India' in bolly_data) # membership operator works on indexes and not on values
+print('kgf chapter 1' in bolly_data)
+print('Tejas Sir' in bolly_data.values) # works on values
+
+# for i in bolly_data:
+#     print(i) # prints values not the index
+
+# for i in bolly_data.index:
+#     print(i)
+
+# for i in bolly_data.index:
+#     print(i, bolly_data[i])
+
+print(100 - sub_marks) # how many marks should i need to get 100. This works based on broadcasting
+print(2 * sub_marks)
+
+print(kohli_data >= 50) # gives boolean series
+
+
+##### Boolean Indexing on Series #####
+print(kohli_data[kohli_data >= 50])
+print(kohli_data[kohli_data >= 50].size)
+print(kohli_data[kohli_data >= 50].count())
+print(kohli_data[kohli_data == 0].count())
+print(subs_data[subs_data > 300].count())
+
+# Printing the name of the movies of those actors who have done more than 20 movies
+num_movies = bolly_data.value_counts()
+lead_act = num_movies[num_movies > 20].index # provides the name of the actors with more than 20 movies
+print(bolly_data[bolly_data.isin(lead_act)]) # all the movies done by the actors with more than 20 movies
+
+
+
+##### Plotting Graphs #####
+subs_data.plot()
+plt.show()
+
+num_movies = bolly_data.value_counts().head(20) # only top 20 most movie actors
+num_movies.plot(kind="bar")
+plt.show()
+num_movies.plot(kind="box")
+plt.show()
+num_movies.plot(kind="hist")
+plt.show()
+num_movies.plot(kind="pie")
+plt.show()
+num_movies.plot(kind="line")
+plt.show()
