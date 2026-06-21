@@ -28,3 +28,20 @@ Rules
 2. Make each dimensions of the two array same size
 * if the sizes of each dimensions are not same, dimension with size 1 is streched to match the dimension of other array
 * if there is a dimension whose size is not 1, it can't be streched and an exception is raised
+
+
+
+
+
+
+
+
+########################################################################################
+######################################## PANDAS ########################################
+########################################################################################
+
+Pandas Series 
+Pandas DataFrame
+
+### Pandas Series - it is a column in a table. It is a 1D array holding data of any type
+
