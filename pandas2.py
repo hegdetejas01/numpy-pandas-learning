@@ -5,6 +5,14 @@ Original file is located at
     
 """
 
+"""
+Points to remember while executing this file : 
+1. add 'datasets/' before every file name 
+eg: 'imdb-top-1000.csv' --> 'datasets/imdb-top-1000.csv'
+
+2. add a print statement to print everthing
+"""
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

@@ -2,7 +2,15 @@
 """
 Original file is located at
     https://colab.research.google.com/drive/15bP6xykHalUSWKReMLMNiqTQd3GxzkbW
-    
+
+"""
+
+"""
+Points to remember while executing this file : 
+1. add 'datasets/' before every file name by replacing '/content/
+eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
+
+2. add a print statement to print everthing
 """
 
 ################## MERGING , JOINING , CONCATENATION ##################
