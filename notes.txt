@@ -90,3 +90,13 @@ see code :
 # joining students and registration
 # since it is right join, students details with id 42,50,38 gets printed even if they are not present in student table
 # common column = student_id
+
+
+
+
+
+4. Outer join
+
+see code :
+
+# Common + right + left = everything will get printed
