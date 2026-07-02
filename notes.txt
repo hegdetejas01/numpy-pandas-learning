@@ -45,3 +45,48 @@ Pandas DataFrame
 
 ### Pandas Series - it is a column in a table. It is a 1D array holding data of any type
 
+
+
+
+
+################### MERGE ###################
+
+
+1. Inner join gets the common items of the tables
+
+see code:
+
+# inner join on students and regs
+# common column = student_id
+# student_id = [1-25], but student_id in regs also consists student_id 42, 50, 38 which are not present in students data
+# therefore the student_id 42, 50, 38 won't get displayed, because it is not present in both table
+
+
+
+
+2. Left join
+* prints common elements
+* prints all those in left table
+* prints none of the right table except those which are common
+
+see code:
+
+# Left join
+# courses with course_id = 11 and 12 have not been registered by any students (regs)
+# joining courses and registration
+# since it is left join, course_id = 11 and 12 also gets displayed even if they aren't common in both column
+# common column = course_id
+
+
+
+
+3. Right join
+
+see code :
+
+# Right join
+# everyting in the right table gets printed(even if not common) + common to both
+# student with id 42,50,38 are not present in student table (left)
+# joining students and registration
+# since it is right join, students details with id 42,50,38 gets printed even if they are not present in student table
+# common column = student_id
