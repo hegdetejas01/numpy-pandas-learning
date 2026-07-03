@@ -19,6 +19,7 @@ eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 
 
@@ -416,17 +417,91 @@ print(temp.index.unique().size)
 
 
 
+### Pivot Table
+# The pivot table takes simple column-wise data as input, and groups the entries into a two-dimensional table that provides a multidimensional summarization of the data.
+
+df = sns.load_dataset('tips')
+df.head(2)
+
+# average total bill on the basis of gender
+df.groupby('sex')['total_bill'].mean()
+
+# extract avg bill by - smoker male, smoker female, non smoker male, non smoker female
+df.groupby(['sex','smoker'])['total_bill'].mean()
+
+df.groupby(['sex','smoker'])['total_bill'].mean().unstack()
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill') # same as above code
+# default value of aggfunction is mean()
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='std')
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='min')
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='max')
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='sum')
+
+df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='count')
+
+# what if there is no values in the argument
+# df.pivot_table(index='sex', columns='smoker') # doen't work -> throws error
+
+df.pivot_table(index='sex', columns='smoker', values=['size','tip','total_bill'], aggfunc=['min','max','mean','median'])
 
 
 
 
 
+# multi dimensional
+df.pivot_table(index=['sex','smoker'], columns=['day','time'], values='total_bill', aggfunc='mean')
+
+df.pivot_table(index=['sex','smoker'], columns=['day','time'], values=['total_bill','size','tip'], aggfunc={'size':'mean', 'tip':'min', 'total_bill':'sum'})
 
 
 
 
 
+df.pivot_table(index='sex', columns='smoker', values='total_bill', aggfunc='sum', margins=True) # margins = true, gives the sum
+
+df.pivot_table(index=['sex','smoker'],
+               columns=['day','time'],
+               values=['total_bill','size'],
+               aggfunc={'total_bill':'sum',
+                        'size':'sum'},
+               margins=True)
 
 
 
 
+
+expense = pd.read_csv('/content/expense_data.csv')
+expense.columns = [i.lower() for i in expense.columns]
+
+expense.head()
+
+expense['category'].value_counts()
+
+# month by month category wise graph
+
+# add a new column month
+months = {
+    1:'jan',2:'feb',3:'mar',4:'apr',5:'may',6:'jun',7:'jul',8:'aug',9:'sep',10:'oct',11:'nov',12:'dec'
+}
+expense['month'] = expense['date'].str.split().apply(lambda x: x[0].split('/')[0])
+def monthName(monthNum):
+  return months[int(monthNum)]
+
+expense['month'] = expense['month'].apply(monthName)
+
+expense
+
+expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum")
+
+expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum", fill_value=0) # nan will be replaced by 0
+
+expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum", fill_value=0).plot()
+
+expense.pivot_table(index="month", columns="income/expense", values="inr", aggfunc="sum", fill_value=0).plot()
+
+expense.pivot_table(index="month", columns="account", values="inr", aggfunc="sum", fill_value=0).plot()
