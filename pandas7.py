@@ -403,10 +403,6 @@ death = death.melt(id_vars=['Province/State','Country/Region','Lat','Long'], var
 
 print(confirmed.shape, death.shape)
 
-# confirmed = confirmed[:int(confirmed.shape[0]//1.25)]
-# death = death[:int(death.shape[0]//1.25)]
-# confirmed.head(2)
-
 temp = confirmed.merge(death, on=['Province/State','Country/Region','Lat','Long','dates'])[['Country/Region','dates','number of confirmed cases','number of death cases']].set_index('Country/Region')
 
 print(temp.index.size)
