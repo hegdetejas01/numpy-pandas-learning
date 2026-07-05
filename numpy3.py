@@ -34,6 +34,15 @@ print(a2[a2%7!=0])
 # 1. It refers how numpy treats arrays with different shapes during arithmathic operations.
 # 2. The smaller array is broadcast accross the larger array so that they have compatible shapes
 
+# Rules
+# 1. Make the 2 arrays have same number of dimensions
+# * if the dimensions are not same, make it same by adding 1 at the front
+# * eg: a:(3*4), b:(3,) ---> a:(3*4), b:(1,3)
+
+# 2. Make each dimensions of the two array same size
+# * if the sizes of each dimensions are not same, dimension with size 1 is streched to match the dimension of other array
+# * if there is a dimension whose size is not 1, it can't be streched and an exception is raised
+
 a = np.arange(6).reshape(2,3)
 b = np.arange(6,12).reshape(2,3)
 print(a+b) # item wise addition
@@ -46,14 +55,6 @@ a = np.arange(3).reshape(1,3)
 b = np.arange(3).reshape(3,1)
 print("\n",a,b,a+b,sep="\n")
 
-# Rules
-# 1. Make the 2 arrays have same number of dimensions
-# * if the dimensions are not same, make it same bu adding 1 at the front
-# * eg: a:(3*4), b:(3,) ---> a:(3*4), b:(1,3)
-
-# 2. Make each dimensions of the two array same size
-# * if the sizes of each dimensions are not same, dimension with size 1 is streched to match the dimension of other array
-# * if there is a dimension whose size is not 1, it can't be streched and an exception is raised
 
 
 

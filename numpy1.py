@@ -8,6 +8,7 @@ print(a1,a2,a3)
 
 
 # Creating float datatype array
+# dtype
 a4 = np.array([1,2,3], dtype=float)
 a5 = np.array([0,1,2], dtype=bool)
 a6 = np.array([1,2,3], dtype=str)
@@ -25,20 +26,20 @@ a10 = np.arange(1,11).reshape(2,5)
 print(a9, a10, sep="\n")
 
 print()
-a11 = np.arange(1,13).reshape(4,3)
-a12 = np.arange(1,13).reshape(3,4)
+a11 = np.arange(1,13).reshape(4,3) # 2D
+a12 = np.arange(1,13).reshape(3,4) # 2D
 a13 = np.arange(1,13).reshape(2,6) # 2D
-a14 = np.arange(1,13).reshape(6,2)
-a15 = np.arange(1,13).reshape(2,3,2)
+a14 = np.arange(1,13).reshape(6,2) # 2D
+a15 = np.arange(1,13).reshape(2,3,2) # 3D
 a16 = np.arange(1,13).reshape(2,2,3) # 3D
-a17 = np.arange(1,13).reshape(3,2,2)
+a17 = np.arange(1,13).reshape(3,2,2) # 3D
 print(a11,a12,a13,a14,a15,a16,a17,sep="\n")
 
 
 # np.ones and np.zeros and np.random
 print()
 a18 = np.ones((3,4)) # 3 cross 4 matrix of all elements 1
-a19 = np.zeros((3,2,2))
+a19 = np.zeros((3,2,2)) # 3x2x2 (3D matrix)
 a20 = np.random.random((3,4)) # 3 cross 4 matrix of random elements between 0 and 1
 print(a18,a19,a20,sep="\n")
 
@@ -57,9 +58,9 @@ print()
 
 
 ### Array Attributes
-b1 = np.arange(10,dtype=np.int32)
+b1 = np.arange(10, dtype=np.int32)
 b2 = np.arange(12, dtype=float).reshape(3,4)
-b3 = np.arange(8,dtype=np.int8).reshape(2,2,2)
+b3 = np.arange(8, dtype=np.int8).reshape(2,2,2)
 
 # ndim - number of dimension
 print("",b1.ndim, b2.ndim, b3.ndim, sep="\n")
@@ -97,6 +98,10 @@ print("", c2+4, c1*2, sep="\n") # all elements in c2 is addded by 4 and all elem
 
 # Relational
 print("", c1>5, c2 < 18, c2 == 18, sep="\n") # checks is each elements of c1 is greater than 5 , checks if all elements of c2 is less than 18 , checks if the elements of c2 is equal to 18
+# gives a boolean array
+
+
+
 
 
 ### Vector Operations
@@ -228,7 +233,7 @@ for i in a2:
     for j in i:
         print(j)
 
-# This is equivalent to the above 2 for loops in a2
+# This is equivalent to the above 2 nested for loops in a2
 for i in np.nditer(a2):
     print(i)
 
@@ -237,7 +242,7 @@ for i in a3:
         for k in j:
             print(k)
 
-# This is equivalent to the above 3 for loops in a3
+# This is equivalent to the above 3 nested for loops in a3
 for i in np.nditer(a3):
     print(i)
 
