@@ -43,11 +43,11 @@ studentData = pd.DataFrame(studentData)
 
 
 # Creating DataFrames using read_csv
-moviesData = pd.read_csv("/content/movies.csv") # gets imported as a DF
+moviesData = pd.read_csv("datasets/movies.csv") # gets imported as a DF
 print(type(moviesData))
 print(moviesData)
 
-iplData = pd.read_csv('ipl-matches.csv')
+iplData = pd.read_csv('datasets/ipl-matches.csv')
 print(iplData)
 
 
