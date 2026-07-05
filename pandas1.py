@@ -69,6 +69,8 @@ test_data = pd.read_csv(file) # file gets imported as a dataframe
 print(test_data)
 print(type(test_data))
 
+
+# squeeze = True has been discarded, and hence the below is the correct format
 subs_data = pd.read_csv(file).squeeze('columns') # file gets imported as Series
 print(subs_data)
 print(type(subs_data))
@@ -77,7 +79,7 @@ file = "datasets/kohli_ipl.csv"
 kohli_data = pd.read_csv(file, index_col="match_no").squeeze('columns')
 print(kohli_data)
 print(type(kohli_data)) # series
-print(kohli_data.name)
+print(kohli_data.name) # gives the name of the column 'RUNS'
 
 file = "datasets/bollywood.csv"
 bolly_data = pd.read_csv(file, index_col="movie").squeeze('columns')
@@ -163,6 +165,7 @@ print(kohli_data[5:16])
 print(bolly_data[-5:])
 print(bolly_data[::2]) # gives alternative movies
 
+# Fancy indexing
 print(kohli_data[[1,3,5,2]])
 print(bolly_data[['Kaante','3 Deewarein','Ek Khiladi Ek Haseena (film)']])
 
@@ -228,9 +231,9 @@ print(kohli_data >= 50) # gives boolean series
 ##### Boolean Indexing on Series #####
 print(kohli_data[kohli_data >= 50])
 print(kohli_data[kohli_data >= 50].size)
-print(kohli_data[kohli_data >= 50].count())
-print(kohli_data[kohli_data == 0].count())
-print(subs_data[subs_data > 300].count())
+print(kohli_data[kohli_data >= 50].count()) # how many times he has scored more than 50
+print(kohli_data[kohli_data == 0].count()) # how many time he got out at duck
+print(subs_data[subs_data > 300].count()) # count of days on which subscribers more than 300 were registered
 
 # Printing the name of the movies of those actors who have done more than 20 movies
 num_movies = bolly_data.value_counts()
