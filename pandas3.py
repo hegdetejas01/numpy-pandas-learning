@@ -26,8 +26,8 @@ print(subsData.clip(100,200))
 
 ### drop_duplicates
 temp = pd.Series([1,1,2,2,3,3,4,4])
-print(temp.drop_duplicates()) # duplicates gets dropped, 1st occurance will remain, other all occurence will get deleted
-print(temp.drop_duplicates(keep='last')) # doesn't delete the last occurences. Rest will be deleted
+print(temp.drop_duplicates()) # duplicates gets dropped, it keeps the first occurance, other all occurence will get deleted
+print(temp.drop_duplicates(keep='last')) # last occureance will be kept. Rest will be deleted
 
 moviesData = pd.read_csv('datasets/bollywood.csv', index_col="movie").squeeze('columns')
 print(moviesData.size, "\n",moviesData.drop_duplicates().size)
@@ -37,7 +37,7 @@ print(temp.duplicated().sum()) # gives the count of duplicates
 print(viratData.duplicated().sum())
 
 
-# isnan
+# isnull
 temp = pd.Series([1,2,1,np.nan,4,5,np.nan,6,3,1,np.nan])
 print(temp.count()) # gives only the non null values
 print(temp.size) # gives all values irrespective of null or not null
@@ -67,7 +67,7 @@ print(viratData[viratData.isin([49,99,98,48])])
 print(moviesData.apply(lambda x: x.split()[0].upper()).head(3))
 
 # if i have gained (more than avg) subscrribers - it will be a good day, else bad day
-x = subsData.apply(lambda x: 'good day' if x>np.mean(subsData)else 'bad day')
+x = subsData.apply(lambda x: 'good day' if x>np.mean(subsData) else 'bad day')
 print(x)
 
 
