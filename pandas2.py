@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Original file is located at
     https://colab.research.google.com/drive/1MMN0gm-1v_sWeNPZl5RnfeUMhYXscMvi
