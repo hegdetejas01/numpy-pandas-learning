@@ -1,4 +1,4 @@
-### Creating numpy arrays
+##### Creating numpy arrays #####
 
 import numpy as np
 a1 = np.array([1,2,3,4]) # 1D array - Vector
@@ -38,26 +38,27 @@ print(a11,a12,a13,a14,a15,a16,a17,sep="\n")
 
 # np.ones and np.zeros and np.random
 print()
-a18 = np.ones((3,4)) # 3 cross 4 matrix of all elements 1
-a19 = np.zeros((3,2,2)) # 3x2x2 (3D matrix)
-a20 = np.random.random((3,4)) # 3 cross 4 matrix of random elements between 0 and 1
-print(a18,a19,a20,sep="\n")
+a18 = np.ones((3,4)) # 3 cross 4 matrix of all elements 1  # creating numpy array on the go where all elements are 1
+a19 = np.ones((3,4))
+a20 = np.zeros((3,2,2)) # 3x2x2 (3D matrix)
+a21 = np.random.random((3,4)) # 3 cross 4 matrix of random elements between 0 and 1
+print(a18,a19,a20,a21,sep="\n")
 
 
 # np.linspace (linear space)
-a21 = np.linspace(-1,10,10) # create 10 equally spaced number between -1 and 10
-a22 = np.linspace(1,100,10)
-print(a21, a22, sep="\n")
+a22 = np.linspace(-1,10,10) # create 10 equally spaced number between -1 and 10
+a23 = np.linspace(1,100,10)
+print(a23, a23, sep="\n")
 
 # identity matrix
-a23 = np.identity(3,dtype=int) # it is always a square matrix with all diagonal elements 1
-print(a23)
+a24 = np.identity(3,dtype=int) # it is always a square matrix with all diagonal elements 1
+print(a24)
 print()
 
 
 
 
-### Array Attributes
+##### Array Attributes #####
 b1 = np.arange(10, dtype=np.int32)
 b2 = np.arange(12, dtype=float).reshape(3,4)
 b3 = np.arange(8, dtype=np.int8).reshape(2,2,2)
@@ -71,7 +72,7 @@ print("",b1.shape, b2.shape, b3.shape, sep="\n")
 # size - gives the number of items
 print("",b1.size, b2.size, b3.size, sep="\n")
 
-# itemsize - how much size is occupied by the each items
+# itemsize - how much size is occupied in memory by the each item
 print("",b1.itemsize, b2.itemsize, b3.itemsize, sep="\n")
 
 # dtype
@@ -79,22 +80,23 @@ print("",b1.dtype, b2.dtype, b3.dtype, sep="\n")
 
 
 
-### Changing Datatype
-# astype
+# Changing Datatype 
+# astype - way for memory optimization
 b4 = b3.astype(np.int32) # b3 is int8 , conveting it to int32
 print("", b3.dtype, b4.dtype, sep="\n")
 
 
 
-##### Array Operations
+##### Array Operations #####
 
 c1 = np.arange(12).reshape(3,4)
 c2 = np.arange(12,24).reshape(3,4)
 
-### Scalar Operations
+### Scalar Operations (operation on scalar and numpy array
 
 # Arithmatic
 print("", c2+4, c1*2, sep="\n") # all elements in c2 is addded by 4 and all elements in c1 is multiplied by 2
+print(c1-2, c1/2, c1**2, sep="\n")
 
 # Relational
 print("", c1>5, c2 < 18, c2 == 18, sep="\n") # checks is each elements of c1 is greater than 5 , checks if all elements of c2 is less than 18 , checks if the elements of c2 is equal to 18
@@ -102,18 +104,16 @@ print("", c1>5, c2 < 18, c2 == 18, sep="\n") # checks is each elements of c1 is 
 
 
 
-
-
-### Vector Operations
+### Vector Operations (operation on 2 numpy array)
 
 # Arithmatic - works only if shapes are same
 print(c1 + c2) # each elements gets added to each other that is first element with first element, second with second and so on
-print(c1 * c2)
+print(c1 * c2) 
 print(c1 ** (c2/10))
 
 
 
-##### Array Functions
+##### Array Functions ####
 
 d1 = np.random.random((3,3))
 d1 = np.round(d1*100) # gives the 3 cross 3 array from 0 to 100
@@ -140,9 +140,14 @@ print(np.prod(d1, axis=1)) # row wise product
 
 
 print(np.mean(d1)) # mean of entire matrix
+print(np.mean(d1,axis=1))
+print(np.mean(d1,axis=0))
 print(np.median(d1, axis=0)) # median coloum wise
 print(np.var(d1, axis=1)) # varience row wise
 print(np.std(d1)) # std deviation of entire d1
+
+
+print(np.sin(d1)) 
 
 
 ### Dot product
@@ -177,15 +182,19 @@ a = np.ceil(np.random.random((2,3))*100)
 ### Indexing
 # positive indexing and negative indexing
 
-a = np.arange(12).reshape(3,4)
-b = np.arange(8).reshape(2,2,2)
-print("",a,b,sep="\n")
+a = np.arange(12).reshape(3,4) # 2d array
+b = np.arange(8).reshape(2,2,2) # 3d array
+c = np.arange(10) # 1d array
+print("",a,b,c,sep="\n")
 
+print(c[-1]
+print(c[0])
 print(a[-1,-1], a[1,3], a[2,0])
 print(a[-1][-1], a[1][3], a[2][0])
 print(b[0,0,0], b[-1,-1,-1], b[1,0,1])
 
-###### Slicing ######
+      
+### Slicing
 
 c = np.arange(10)
 print(c)
