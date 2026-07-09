@@ -1,4 +1,7 @@
 ############ Numpy Arrays Vs Python Lists
+# speed of execution - Numpy arrays are faster
+# memory occupied in RAM - Numpy consumes less
+# convenience - Numpy is better
 
 # Time for adding 2 array / list
 import numpy as np
@@ -31,5 +34,5 @@ print(s.getsizeof(a))  # how many bytes is a occupying
 b = np.arange(10000000)
 c = np.arange(10000000, dtype=np.int32)
 d = np.arange(10000000, dtype=np.int16)
-e = np.arange(10000000, dtype=np.int8)
+e = np.arange(10000000, dtype=np.int8) # how 1 crore is getting stored in 8 bytes?
 print(s.getsizeof(b),s.getsizeof(c),s.getsizeof(d),s.getsizeof(e), sep = "\n") # how many bytes is a occupying
