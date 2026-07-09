@@ -256,8 +256,8 @@ for i in np.nditer(a3):
     print(i)
 
 
-
-### Transpose
+### Reshaping - Reshape, Transpose, Ravel
+## Transpose
 
 a = np.arange(12).reshape(3,4)
 b = a.transpose()
@@ -268,7 +268,7 @@ print("",a.shape,b.shape,sep="\n")
 print("",b,c,d,sep="\n")
 
 
-### Ravel - converts to 1D array
+## Ravel - converts to 1D array
 a2 = np.arange(12).reshape(3,4)
 a3 = np.arange(18).reshape(3,2,3)
 print(a2.ravel(), a3.ravel(), sep="\n")
