@@ -38,6 +38,7 @@ print(a2[a2%7!=0])
 # 1. Make the 2 arrays have same number of dimensions
 # * if the dimensions are not same, make it same by adding 1 at the front
 # * eg: a:(3*4), b:(3,) ---> a:(3*4), b:(1,3)
+# * egL a:(3,3,3), b:(3,) ---> a:(3,3,3), b:(1,1,3)
 
 # 2. Make each dimensions of the two array same size
 # * if the sizes of each dimensions are not same, dimension with size 1 is streched to match the dimension of other array
@@ -55,8 +56,25 @@ a = np.arange(3).reshape(1,3)
 b = np.arange(3).reshape(3,1)
 print("\n",a,b,a+b,sep="\n")
 
+a = np.arange(12).reshape(3,4)
+b = np.arnage(3)
+print(a, b, sep ="\n\n")
+print(a+b) # could n't be broadcasted because of the shape
 
+a = np.arange(3),reshape(1,3)
+b = np.arange(3),reshape(4,1)
+print(a,b,sep="\n\n")
+print(a+b)
 
+a = np.array([1])
+b = np.arange(4).reshape(2,2)
+print(a,b, sep="\n\n")
+print(a+b)
+
+a = np.arange(12).reshape(3,4)
+b = np.arange(12).reshape(4,3)
+print(a,b, sep="\n\n")
+print(a+b)  # broadcasting is not possible
 
 
 ############## Mathematical Formulas and NumPy ##############
@@ -71,7 +89,7 @@ a = np.arange(100)
 print(sigmoid(a))
 
 
-## Mean Squared Function
+## Mean Squared Error Function - It is for linear regression
 # Formula = (1/n)[(y1^ - y1)^2 + (y2^ - y2)^2 + (y3^ - y3)^2 + ...]
 
 actual = np.random.randint(1,50,25)
@@ -83,6 +101,7 @@ def meanSquareError(a, p):
 print(meanSquareError(actual, predicted))
 
 
+## binary cross entropy - It is for logistic regression
 
 
 
