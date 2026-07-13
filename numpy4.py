@@ -92,7 +92,9 @@ print("",a,np.histogram(a,bins=[0,10,20,40,60,70,80,100]), sep="\n")
 
 
 # np.corrcoef - corelation coefficient - it returns pearson product moment correlation coefficient
-
+salary = np.array([20000,40000,25000,350000,60000])
+experience = np.array([1,3,2,4,2])
+np.corrcoef(salary,experience)
 
 
 # np.isin - searches multiple elements in a array
@@ -127,6 +129,7 @@ print(np.intersect1d(a,b))
 print(np.setdiff1d(a,b))
 print(np.setdiff1d(b,a))
 print(np.setxor1d(a,b))
+print(np.in1d(a,1))
 
 
 
