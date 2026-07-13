@@ -61,8 +61,8 @@ b = np.arnage(3)
 print(a, b, sep ="\n\n")
 print(a+b) # could n't be broadcasted because of the shape
 
-a = np.arange(3),reshape(1,3)
-b = np.arange(3),reshape(4,1)
+a = np.arange(3).reshape(1,3)
+b = np.arange(3).reshape(4,1)
 print(a,b,sep="\n\n")
 print(a+b)
 
