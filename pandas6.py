@@ -4,10 +4,6 @@ Original file is located at
 
 """
 
-"""
-1. add a print statement to print everthing
-"""
-
 ################## MERGING , JOINING , CONCATENATION ##################
 
 import numpy as np
@@ -21,25 +17,29 @@ nov = pd.read_csv('datasets/reg-month1.csv')
 dec = pd.read_csv('datasets/reg-month2.csv')
 students = pd.read_csv('datasets/students.csv')
 
+
+
 ### concat function - pd.concat - stacking the DF vertically
-pd.concat([nov, dec]) # index has been retained [0-24][0-27]
+print(pd.concat([nov, dec])) # index has been retained [0-24][0-27]
 
 regs = pd.concat([nov, dec], ignore_index=True) # index from 0 - 52
-regs
-
+print(regs)
 # nov.append(dec) # --> this donot work now, because it is truncated from pandas2.0
 
-multi = pd.concat([nov,dec],keys=['nov','dec']) # this is a multi index DF - nov and number | dec and number
 
-multi.loc['nov'] # shows data of with nov as index
-# multi.loc['dec'] # shows data of dec as index
+multi = pd.concat([nov,dec],keys=['nov','dec']) # this is a multi index DF - 
+# 1. nov and number 
+# 2. dec and number
+print(multi.loc['nov']) # shows data of with nov as index
+print(multi.loc['dec']) # shows data of dec as index
+print(multi.loc[('nov',0)]) # 0th of nov
+print(multi.loc[('dec',4)]) # 5th item of dec
 
-multi.loc[('nov',0)] # 0th of nov
 
-multi.loc[('dec',4)] # 5th item of dec
 
 # Joining the data side by side instead of verticle joining
-pd.concat([nov,dec],axis=1) # axis = 1 : ROWS
+# even concatenates when the number of rows are unequal
+print(pd.concat([nov,dec],axis=1)) # axis = 1 : ROWS
 
 # concatenating vertically when there are unequal columns
 a = pd.DataFrame(
@@ -54,9 +54,7 @@ b = pd.DataFrame(
         [8,9,0]
     ]
 )
-pd.concat([a,b])
-
-
+print(pd.concat([a,b]))
 
 
 
@@ -70,20 +68,23 @@ pd.concat([a,b])
 
 # joining Data tables based on a common column
 
+
+
+## Inner Join
 # inner join on students and regs
 # common column = student_id
 # student_id = [1-25], but student_id in regs also consists id 42, 50, 38 which are not present in students data
 # therefore the student_id 42, 50, 38 won't get displayed, because it is not present in both table
+print(students.merge(regs, how='inner',on='student_id'))
 
-students.merge(regs, how='inner',on='student_id')
 
-# Left join
+
+## Left join
 # courses with course_id = 11 and 12 have not been registered by any students (regs)
 # joining courses and registration
 # since it is left join, course_id = 11 and 12 also gets displayed even if they aren't common in both column
 # common column = course_id
-
-courses.merge(regs, how="left", on="course_id")
+print(courses.merge(regs, how="left", on="course_id"))
 
 temp = pd.DataFrame(
     {
@@ -94,26 +95,25 @@ temp = pd.DataFrame(
 )
 students = pd.concat([students, temp], ignore_index=True)
 
-# Right join
+
+
+
+## Right join
 # everyting in the right table gets printed(even if not common) + common to both
 # student with id 42,50,38 are not present in student table (left)
 # joining students and registration
 # since it is right join, students details with id 42,50,38 gets printed even if they are not present in student table
 # common column = course_id
+print(students.merge(regs, how="right", on="student_id"))
 
-students.merge(regs, how="right", on="student_id")
+print(students.merge(regs, how="left", on="student_id")) # left merge
 
-students.merge(regs, how="left", on="student_id") # left merge
 
 
 
 # Outer Join (full outer join)
 # Common + right + left = everything will get printed
-
-x = students.merge(regs, how="outer", on="student_id")
-
-students.merge(regs, how="outer", on="student_id").tail(15)
-
+print(students.merge(regs, how="outer", on="student_id").tail(15))
 
 
 
@@ -122,69 +122,72 @@ students.merge(regs, how="outer", on="student_id").tail(15)
 total = regs.merge(courses, how='inner', on='course_id')['price'].sum()
 print(total)
 
-# month by month revenue
+# month by month revenue: type 1
 totalNov = nov.merge(courses, how='inner', on='course_id')['price'].sum()
 totalDec = dec.merge(courses, how='inner', on='course_id')['price'].sum()
 print(totalNov, totalDec)
 
-# month by month revenue
+# month by month revenue: type 2
 temp = pd.concat([nov,dec], keys=['nov','dec']).reset_index()
-temp.merge(courses, how='inner',on='course_id').groupby('level_0')['price'].sum()
+print(temp.merge(courses, how='inner',on='course_id').groupby('level_0')['price'].sum())
+
 
 # print the registration table
 # columns = name -> course -> price
 
-regs.merge(students, on="student_id").merge(courses, on="course_id")[['student_id','name','course_id','price']]
+print(regs.merge(students, on="student_id").merge(courses, on="course_id")[['name','course_id','price']])
+print(students.merge(regs, on="student_id").merge(courses, on="course_id")[['name','course_id','price']])
 
-students.merge(regs, on="student_id").merge(courses, on="course_id")
+
 
 # plot a bar chart for each course and its revenue
-regs.merge(courses, on="course_id").groupby('course_name')['price'].sum().plot(kind="bar")
+print(regs.merge(courses, on="course_id").groupby('course_name')['price'].sum().plot(kind="bar"))
 
 # find students who enrolled in both the months
-nov.merge(dec, on="student_id").merge(students, on="student_id")['name'].value_counts().reset_index()['name']
+print(nov.merge(dec, on="student_id").merge(students, on="student_id")['name'].value_counts().reset_index()['name'])
 
 commID = np.intersect1d(nov['student_id'], dec['student_id'])
-students[students['student_id'].isin(commID)]['name']
+print(students[students['student_id'].isin(commID)]['name'])
+
+
 
 # Find courses that got no enrolment
 # courses['course_id']
 # regs['course_id']
-
 courseidList = np.setdiff1d(courses['course_id'], regs['course_id'])
-courses[courses['course_id'].isin(courseidList)]['course_name']
+print(courses[courses['course_id'].isin(courseidList)]['course_name'])
 
 # find students who have not enrolled in any course
 studentidList = np.setdiff1d(students['student_id'], regs['student_id'])
-students[students['student_id'].isin(studentidList)]['name']
+print(students[students['student_id'].isin(studentidList)]['name'])
 
-# print student name and their partner in the same column
+### print student name and their partner in the same column
 
 # done using SELF JOIN - joining it with itself
 # joining the tables using left_on and right_on
+print(students.merge(students, how='inner', left_on="partner", right_on="student_id")[['name_x', 'name_y']])
 
-students.merge(students, how='inner', left_on="partner", right_on="student_id")[['name_x', 'name_y']]
+
 
 ## find the students who did the most number of enrollment
-
 # stuId = regs.merge(students, on='student_id').groupby('student_id')['name'].count().sort_values(ascending=False).head(3).index
-# students[students['student_id'].isin(stuId)][['student_id','name']]
+# print(students[students['student_id'].isin(stuId)][['student_id','name']])
 
 ## or
 
-regs.merge(students, on='student_id').groupby(['student_id','name'])['name'].count().sort_values(ascending=False).head(3)
+print(regs.merge(students, on='student_id').groupby(['student_id','name'])['name'].count().sort_values(ascending=False).head(3))
+
+
 
 # find top 3 students who spent most amount of money on course
-regs.merge(students, on="student_id").merge(courses, on="course_id").groupby(['student_id','name'])['price'].sum().sort_values(ascending=False).head(3)
-
+print(regs.merge(students, on="student_id").merge(courses, on="course_id").groupby(['student_id','name'])['price'].sum().sort_values(ascending=False).head(3))
 
 
 
 
 ### Alternate syntax to merge
-
-pd.merge(students, regs, how="inner", on="student_id")
-
+print(pd.merge(students, regs, how="inner", on="student_id")) 
+# using pd.merge(table1, table2, how="", on="")
 
 
 
@@ -194,14 +197,12 @@ pd.merge(students, regs, how="inner", on="student_id")
 # find the top 3 stadiums with highest sixes per match ratio
 temp = delivery.merge(matches, left_on='match_id', right_on='id') # since the name of id in both tables are different we have to use - lefton and righton
 six = temp[temp['batsman_runs'] == 6]
-
 numSixes = six.groupby('venue')['venue'].count()
-
 numMatches = matches['venue'].value_counts()
 
-(numSixes/numMatches).sort_values(ascending=False).head(3)
+print((numSixes/numMatches).sort_values(ascending=False).head(3))
+
 
 # find the orange cap holder of every season
 temp = delivery.merge(matches, left_on='match_id', right_on='id')
-temp.groupby(['season','batsman'])['batsman_runs'].sum().reset_index().sort_values('batsman_runs', ascending=False).drop_duplicates(subset=['season'], keep='first').sort_values('season', ascending=False)
-
+print(temp.groupby(['season','batsman'])['batsman_runs'].sum().reset_index().sort_values('batsman_runs', ascending=False).drop_duplicates(subset=['season'], keep='first').sort_values('season', ascending=False))
