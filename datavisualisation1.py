@@ -53,7 +53,7 @@ plt.plot(year, price) # X and Y
 
 
 
-batsman = pd.read_csv('/content/sharma-kohli.csv')
+batsman = pd.read_csv('datasets/sharma-kohli.csv')
 batsman.columns = [i.lower() for i in batsman.columns]
 batsman
 
@@ -200,7 +200,7 @@ y = 10*x + 3 + np.random.randint(0,200,50)
 
 plt.scatter(x,y)
 
-batter = pd.read_csv('/content/batter.csv').head(50)
+batter = pd.read_csv('datasets/batter.csv').head(50)
 
 plt.scatter(batter['avg'], batter['strike_rate'])
 plt.title('Avg versus Strike Rate Analysis of top 50 batsman')
@@ -257,7 +257,7 @@ plt.barh(color, children, color='green') # horizontal graphs
 
 
 
-record = pd.read_csv('/content/batsman_season_record.csv')
+record = pd.read_csv('datasets/batsman_season_record.csv')
 record.sample()
 
 plt.bar(record['batsman'], record['2015'])
@@ -320,7 +320,7 @@ plt.hist(data, bins=[0,10,20,30,40,50,60,70,80,90,100], width = 9)
 
 
 
-vk = pd.read_csv('/content/vk.csv')
+vk = pd.read_csv('datasets/vk.csv')
 vk
 
 plt.hist(vk['batsman_runs'], bins=[0,10,20,30,40,50,60,70,80,90,100,110,120,130])
@@ -330,7 +330,7 @@ plt.grid()
 
 
 
-arr = np.load('/content/big-array.npy')
+arr = np.load('datasets/big-array.npy')
 arr.shape
 
 plt.hist(arr, bins=[0,10,20,30,40,50,60,70,80]) # since few bins have large data, the other bins actually becomes less sized
@@ -356,7 +356,7 @@ plt.show()
 
 
 
-gayle = pd.read_csv('/content/gayle-175.csv')
+gayle = pd.read_csv('datasets/gayle-175.csv')
 gayle
 
 plt.pie(gayle['batsman_runs'], labels=gayle['batsman'])
