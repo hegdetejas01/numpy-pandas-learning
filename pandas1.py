@@ -205,8 +205,17 @@ print(sorted(subs_data, reverse=True)) # stores in the list
 print(min(subs_data))
 print(max(subs_data))
 
-print(list(sub_marks))
-print(dict(sub_marks))
+sub_marks_dict = {
+    "maths":100,
+    "economics":89,
+    "kannada":99,
+    "english":45,
+    "social science":33
+}
+sub_marks = pd.Series(sub_marks_dict, name="Tejas's Sub & Marks", dtype=np.int16)
+
+print(list(sub_marks)) # prints only the values of the sub_marks
+print(dict(sub_marks)) # prints both key(index) and value of sub_marks 
 # print(dict(bolly_data))
 
 print('Why Cheat India' in bolly_data) # membership operator works on indexes and not on values

@@ -187,7 +187,7 @@ print(movies.rename(columns = {'imdb_id' : 'imdb', 'poster_path' : 'link'}, inpl
 print(movies.head(2))
 
 # rename index
-print(movies.rename(index={'Uri: The Surgical Strike':'URI', 'Battalion 609':'Battalion'}, inplace=True)) # changing the name of the index
+print(movies.rename(index = {'Uri: The Surgical Strike':'URI', 'Battalion 609':'Battalion'}, inplace=True)) # changing the name of the index
 print(movies.head(2))
 
 
@@ -217,7 +217,7 @@ print(len(temp.unique())) # len counts the nan value as well
 print(temp.nunique()) # didn't count nan values
 
 # unique function gives the unique elements
-# nunique gives the total number if unique items
+# nunique gives the total number of unique items
 
 
 
@@ -242,7 +242,7 @@ print(students.notnull()) # gives a boolean DF
 
 ### dropna(both series and DF) - not a permanent operation (inplace = True make changes permanent)
 print(students['name'].dropna())
-print(students.dropna()) # if any row has any missing values, that row will be dropped in DF
+print(students.dropna()) # if "any" column of a row has any missing values, that row will be dropped in DF
 print(students.dropna(how='all')) # removing rows where all data are missing
 print(students.dropna(subset=['name'])) # removing rows without names
 print(students.dropna(subset=['name','college'])) # removing rows where either name is missing or college is missing
@@ -256,6 +256,7 @@ print(students.fillna(0)) # replacing all the missing values with 0
 # but this is not a good practice. missing values should be handled column by column
 
 print(students['package'].fillna(students['package'].mean()))
+
 # print(students['name'].fillna(method='ffill')) # forword fill
 
 # /tmp/ipykernel_2393/3926152074.py:1: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.

@@ -131,7 +131,7 @@ print(studentData.duplicated().sum()) # there are 3 duplicated row
 print(studentData.rename(columns = {'marks':'percent', 'package':'ctc'})) # doesnot change permanently
 print(studentData)
 
-print(studentData.rename(columns = {'marks':'percent', 'package':'ctc'}, inplace=True)) # changes the name permanently
+print(studentData.rename(columns = {'marks':'percent', 'package':'ctc'}, inplace=True)) # changes the name permanently and returns a None
 print(studentData)
 
 
@@ -187,7 +187,7 @@ print(iplData[['team1','team2','tosswinner','winningteam']])
 
 
 
-
+# set_index()
 studentData = {
                 'name':['tejas','hello','world','okay','google'],
                 'iq' : [100,90,120,120,80],

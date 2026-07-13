@@ -1,7 +1,6 @@
 # Supplementary Video
 import numpy as np
 import pandas as pd
-import sys
 
 ### astype 
 viratData = pd.read_csv('datasets/kohli_ipl.csv', index_col='match_no').squeeze('columns')
