@@ -187,7 +187,7 @@ b = np.arange(8).reshape(2,2,2) # 3d array
 c = np.arange(10) # 1d array
 print("",a,b,c,sep="\n")
 
-print(c[-1]
+print(c[-1])
 print(c[0])
 print(a[-1,-1], a[1,3], a[2,0])
 print(a[-1][-1], a[1][3], a[2][0])
