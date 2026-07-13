@@ -127,8 +127,8 @@ print(np.sum(d1)) # sum of all elements in the array
 print(np.prod(d1)) # product of all elements in the array
 
 
-# coloum wise max/min and row wise max/min
-# coloum : axis = 0, 
+# column wise max/min and row wise max/min
+# column : axis = 0, 
 # row : axis = 1
 print(np.max(d1, axis=0)) # coloum wise max
 print(np.max(d1, axis=1)) # row wise max
