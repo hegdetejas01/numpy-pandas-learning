@@ -158,15 +158,11 @@ pd.date_range(start="2026/7/3", end="2030/10/5", freq='YS')
 ### periods
 # till what period you want the data
 
-pd.date_range(start="2026/7/3", periods=25, freq='D') # 25 days from now
-
-pd.date_range(start="2026/7/3", periods=25, freq='H') # 25 hours from now
-
-pd.date_range(start="2026/7/3", periods=25, freq='ME') # 25 month end from now
-
-pd.date_range(start="2026/7/3", periods=25, freq='MS') # 25 month start from now
-
-pd.date_range(start="2026/7/3", periods=25, freq='YE') # 25 year end from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='D')) # 25 days from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='H')) # 25 hours from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='ME')) # 25 month end from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='MS')) # 25 month start from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='YE')) # 25 year end from now
 
 
 
