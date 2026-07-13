@@ -5,11 +5,7 @@ Original file is located at
 """
 
 """
-Points to remember while executing this file : 
-1. add 'datasets/' before every file name 
-eg: 'imdb-top-1000.csv' --> 'datasets/imdb-top-1000.csv'
-
-2. add a print statement to print everthing
+1. add a print statement to print everthing
 """
 
 ############## GROUP BY #################
@@ -18,7 +14,7 @@ eg: 'imdb-top-1000.csv' --> 'datasets/imdb-top-1000.csv'
 import numpy as np
 import pandas as pd
 
-movies = pd.read_csv('imdb-top-1000.csv')
+movies = pd.read_csv('datasets/imdb-top-1000.csv')
 movies.columns = [name.lower() for name in movies.columns]
 movies.head(3)
 
@@ -224,7 +220,7 @@ duo[['gross','imdb_rating','runtime','metascore','no_of_votes']].agg(['min','max
 
 ################## WORKING WITH GROUP BY ##################
 
-ipl = pd.read_csv('deliveries.csv')
+ipl = pd.read_csv('datasets/deliveries.csv')
 ipl.head(2)
 
 ipl.shape

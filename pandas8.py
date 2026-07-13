@@ -5,11 +5,7 @@ Original file is located at
 """
 
 """
-Points to remember while executing this file : 
-1. add 'datasets/' before every file name by replacing '/content/
-eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
-
-2. add a print statement to print everthing
+1. add a print statement to print everthing
 """
 
 ############################ PANDAS STRING ############################
@@ -45,7 +41,7 @@ s.str.startswith('c')
 
 
 
-titanic = pd.read_csv('/content/titanic.csv')
+titanic = pd.read_csv('datasets/titanic.csv')
 titanic.columns = [i.lower() for i in titanic.columns]
 
 titanic.head()

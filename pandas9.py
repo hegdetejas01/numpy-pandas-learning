@@ -5,11 +5,7 @@ Original file is located at
 """
 
 """
-Points to remember while executing this file : 
-1. add 'datasets/' before every file name
-eg: 'deliveries-1.csv' --> 'datasets/deliveries-1.csv'
-
-2. add a print statement to print everthing
+1. add a print statement to print everthing
 """
 
 ######################## Vectorised Date Time Function ########################
@@ -136,10 +132,10 @@ pd.date_range(start="2026/7/3", end="2026/8/28", freq='W-THU') # shows thursday
 pd.date_range(start="2026/7/3", end="2026/8/28", freq='W-Sat') # shows saturday
 
 # Hourly time stamp
-pd.date_range(start="2026/7/3", end="2026/7/5", freq='H')
+pd.date_range(start="2026/7/3", end="2026/7/5", freq='h')
 
 # 4 hour time stamp
-pd.date_range(start="2026/7/3", end="2026/7/5", freq='4H')
+pd.date_range(start="2026/7/3", end="2026/7/5", freq='4h')
 
 # Month end
 pd.date_range(start="2026/7/3", end="2026/10/5", freq='ME') # M will be removed from pandas, therefore using ME
@@ -159,7 +155,7 @@ pd.date_range(start="2026/7/3", end="2030/10/5", freq='YS')
 # till what period you want the data
 
 print(pd.date_range(start="2026/7/3", periods=25, freq='D')) # 25 days from now
-print(pd.date_range(start="2026/7/3", periods=25, freq='H')) # 25 hours from now
+print(pd.date_range(start="2026/7/3", periods=25, freq='h')) # 25 hours from now
 print(pd.date_range(start="2026/7/3", periods=25, freq='ME')) # 25 month end from now
 print(pd.date_range(start="2026/7/3", periods=25, freq='MS')) # 25 month start from now
 print(pd.date_range(start="2026/7/3", periods=25, freq='YE')) # 25 year end from now
@@ -206,7 +202,7 @@ x.dt.year
 
 
 
-expense = pd.read_csv('expense_data.csv')
+expense = pd.read_csv('datasets/expense_data.csv')
 expense.columns = [i.strip().lower() for i in expense.columns]
 # date in this DF is a string and is not a datetime object
 

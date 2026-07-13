@@ -5,11 +5,7 @@ Original file is located at
 """
 
 """
-Points to remember while executing this file : 
-1. add 'datasets/' before every file name by replacing '/content/
-eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
-
-2. add a print statement to print everthing
+1. add a print statement to print everthing
 """
 
 ################## MERGING , JOINING , CONCATENATION ##################
@@ -17,13 +13,13 @@ eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
 import numpy as np
 import pandas as pd
 
-delivery = pd.read_csv('/content/deliveries-1.csv')
-matches = pd.read_csv('/content/matches.csv')
+delivery = pd.read_csv('datasets/deliveries-1.csv')
+matches = pd.read_csv('datasets/matches.csv')
 
-courses = pd.read_csv('/content/courses.csv')
-nov = pd.read_csv('/content/reg-month1.csv')
-dec = pd.read_csv('/content/reg-month2.csv')
-students = pd.read_csv('/content/students.csv')
+courses = pd.read_csv('datasets/courses.csv')
+nov = pd.read_csv('datasets/reg-month1.csv')
+dec = pd.read_csv('datasets/reg-month2.csv')
+students = pd.read_csv('datasets/students.csv')
 
 ### concat function - pd.concat - stacking the DF vertically
 pd.concat([nov, dec]) # index has been retained [0-24][0-27]

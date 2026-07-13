@@ -5,11 +5,7 @@ Original file is located at
 """
 
 """
-Points to remember while executing this file : 
-1. add 'datasets/' before every file name by replacing '/content/
-eg: '/content/deliveries-1.csv' --> 'datasets/deliveries-1.csv'
-
-2. add a print statement to print everthing
+1. add a print statement to print everthing
 """
 
 #################### MULTI INDEX SERIES ####################
@@ -381,8 +377,8 @@ br.melt(id_vars=['branch'], var_name='year', value_name="number of students") # 
 
 
 
-confirmed = pd.read_csv('/content/time_series_covid19_confirmed_global.csv') ### data in wide format
-death = pd.read_csv('/content/time_series_covid19_deaths_global.csv') ### data in wide format
+confirmed = pd.read_csv('datasets/time_series_covid19_confirmed_global.csv') ### data in wide format
+death = pd.read_csv('datasets/time_series_covid19_deaths_global.csv') ### data in wide format
 
 death.head(2)
 
@@ -472,7 +468,7 @@ df.pivot_table(index=['sex','smoker'],
 
 
 
-expense = pd.read_csv('/content/expense_data.csv')
+expense = pd.read_csv('datasets/expense_data.csv')
 expense.columns = [i.lower() for i in expense.columns]
 
 expense.head()
