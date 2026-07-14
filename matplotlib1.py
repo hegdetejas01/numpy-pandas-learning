@@ -335,7 +335,6 @@ plt.pie(data, labels = sub)
 plt.show()
 
 
-
 gayle = pd.read_csv('datasets/gayle-175.csv')
 print(gayle)
 
@@ -345,7 +344,6 @@ plt.pie(gayle['batsman_runs'], labels=gayle['batsman'])
 plt.pie(gayle['batsman_runs'], labels=gayle['batsman'], autopct='%0.1f%%') # autopct gives the percentage contribution
 
 plt.pie(gayle['batsman_runs'], labels=gayle['batsman'], autopct='%0.1f%%', colors=['blue','green','yellow','red','pink','brown','orange'])
-
 
 
 # explode
