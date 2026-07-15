@@ -251,7 +251,7 @@ print(bolly_data[bolly_data.isin(lead_act)]) # all the movies done by the actors
 
 
 
-##### Plotting Graphs #####
+##### Plotting Graphs on series#####
 subs_data.plot()
 plt.show()
 
