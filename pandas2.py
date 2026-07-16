@@ -212,14 +212,14 @@ print(moviesData.iloc[0]) # gives the first row
 print(type(moviesData.iloc[0]))  # is a series
 print(moviesData.iloc[:5]) # multiple rows - from 0 to 4
 print(moviesData.iloc[:20:2]) # step count = 2
-print(moviesData.iloc[[0,4,5]]) # gives row 0, 4, and 5
+print(moviesData.iloc[[0,4,5]]) # gives row 0, 4, and 5 , fancy indexing
 
 
 # using loc
 print(studentData.loc['tejas']) # gives row with name 'tejas'
 print(studentData.loc['tejas':'okay']) # from tejas to okay (both included)
 print(studentData.loc['tejas':'okay':2])  # step count = 2
-print(studentData.loc[['tejas','okay','hello']])
+print(studentData.loc[['tejas','okay','hello']]) # fancy indexing
 
 
 print(studentData.iloc[0]) # data at 0th index
@@ -239,7 +239,7 @@ print(moviesData.loc[0:3, 'title_x':'poster_path'])
 ###### Filtering the data
 print(iplData.head(3))
 
-# find all the final winners
+# find all the final winners / winner of each ipl season
 print(iplData[iplData['matchnumber'] == 'Final'][['winningteam','season']])
 
 # how many super overs finshes have occured
@@ -261,6 +261,8 @@ movieCount = movieNames.shape[0]
 
 print(movieNames)
 print(movieCount)
+
+
 
 ## Action movies with rating higher than 7.5 and votes > 10000
 
