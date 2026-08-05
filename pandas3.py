@@ -1,6 +1,8 @@
 # Supplementary Video
 import numpy as np
 import pandas as pd
+import sys
+
 
 ### astype 
 viratData = pd.read_csv('datasets/kohli_ipl.csv', index_col='match_no').squeeze('columns')
@@ -8,6 +10,11 @@ print("",viratData.info(),sep="\n") # runs are int64 - consumes lots of space
 
 viratData = viratData.astype('int8')
 print("",viratData.info(),sep="\n")
+
+
+print(sys.getsizeof(viratData))
+viratData = viratData.astype('int16')
+print(sys.getsizeof(viratData))
 
 
 ### between
