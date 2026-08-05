@@ -300,7 +300,7 @@ moviesData['country'] = "India"
 print(moviesData.head(5))
 
 
-# adding new columns from the existing rows
+# adding new columns from the existing columns
 # Lead actor of the film from the actors column
 
 # actors column has null values also. Therefore we have to drop them dropna
