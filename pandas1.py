@@ -70,7 +70,7 @@ print(test_data)
 print(type(test_data))
 
 
-# squeeze = True has been discarded, and hence the below is the correct format
+# squeeze = True : has been discarded, and hence the below is the correct format
 subs_data = pd.read_csv(file).squeeze('columns') # file gets imported as Series
 print(subs_data)
 print(type(subs_data))
