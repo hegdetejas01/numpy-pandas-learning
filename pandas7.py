@@ -308,7 +308,7 @@ print(death.head(2))
 
 ### create a DF with following columns ###
 # Country
-# Data
+# Date
 # Confirm
 # Death
 
@@ -391,8 +391,13 @@ def monthName(monthNum):
 expense['month'] = expense['month'].apply(monthName)
 
 print(expense)
+
 print(expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum"))
+
 print(expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum", fill_value=0)) # nan will be replaced by 0
+
 expense.pivot_table(index="month", columns="category", values="inr", aggfunc="sum", fill_value=0).plot()
+
 expense.pivot_table(index="month", columns="income/expense", values="inr", aggfunc="sum", fill_value=0).plot()
+
 expense.pivot_table(index="month", columns="account", values="inr", aggfunc="sum", fill_value=0).plot()
