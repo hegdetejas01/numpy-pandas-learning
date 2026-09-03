@@ -132,8 +132,8 @@ print(genres.agg(
 
 ##### Looping on groups #####
 for group, data in genres:
-  print("", group, type(group), sep="\n") # string
-  print("", data, type(data), sep="\n") # DF
+    print("", group, type(group), sep="\n") # string
+    print("", data, type(data), sep="\n") # DF
 
 
 
@@ -143,26 +143,26 @@ for group, data in genres:
 print(genres.apply('min', include_groups=False))
 
 
-# find the number of movies in each group strating with A
+# find the number of movies in each group starting with A
 def startsWithA(group):
-  # this group is a DF
-  group['series_title'].str.startswith('A') # gives the boolean series for each group
-  total = group['series_title'].str.startswith('A').sum()
-  return total
+    # this group is a DF
+    group['series_title'].str.startswith('A') # gives the boolean series for each group
+    total = group['series_title'].str.startswith('A').sum()
+    return total
 print(genres.apply(startsWithA))
 
 
 # find the ranking of each movie in the group according to IMDB score (within the group)
 def rankMovie(group):
-  group['genre_rank'] = group['imdb_rating'].rank(ascending=False)
-  return group
+    group['genre_rank'] = group['imdb_rating'].rank(ascending=False)
+    return group
 print(genres.apply(rankMovie))
 
 
 # find a normalised imdb rating group wise for all movies
 def normalRating(group):
-  group['normal_rating'] = (group['imdb_rating'] - group['imdb_rating'].min())/(group['imdb_rating'].max() - group['imdb_rating'].min())
-  return group
+    group['normal_rating'] = (group['imdb_rating'] - group['imdb_rating'].min())/(group['imdb_rating'].max() - group['imdb_rating'].min())
+    return group
 print(genres.apply(normalRating, include_groups=False))
 
 
@@ -219,10 +219,10 @@ print(vkData.groupby('bowling_team')['batsman_runs'].sum().sort_values(ascending
 
 # create a function that can return the highest score of any batsman
 def highestRuns(name):
-  run = 0
-  temp_df = ipl[ipl['batsman'] == name]
-  run = temp_df.groupby('match_id')['batsman_runs'].sum().sort_values(ascending=False).head(1).values[0]
-  return run
+    run = 0
+    temp_df = ipl[ipl['batsman'] == name]
+    run = temp_df.groupby('match_id')['batsman_runs'].sum().sort_values(ascending=False).head(1).values[0]
+    return run
 
 print(highestRuns('V Kohli'))
 print(highestRuns('S Dhawan'))

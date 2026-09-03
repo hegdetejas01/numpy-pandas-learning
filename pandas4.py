@@ -246,6 +246,7 @@ print(students.dropna()) # if "any" column of a row has any missing values, that
 print(students.dropna(how='all')) # removing rows where all data are missing
 print(students.dropna(subset=['name'])) # removing rows without names
 print(students.dropna(subset=['name','college'])) # removing rows where either name is missing or college is missing
+# you can use how parameter even with subset
 
 
 
@@ -327,7 +328,7 @@ print(students.set_index('name').drop(index=['ankit','rishabh']))
 
 
 def sigmoid(value):
-  return 1/(1+np.exp(-value))
+    return 1/(1+np.exp(-value))
 
 ### apply ( both series and DF)
 
@@ -346,9 +347,9 @@ points = pd.DataFrame(
 print(points)
 
 def euclidean(row):
-  ptA = row['point a']
-  ptB = row['point b']
-  return (((ptB[0] - ptA[0]) ** 2) + ((ptB[1] - ptA[0]) ** 2)) ** 0.5
+    ptA = row['point a']
+    ptB = row['point b']
+    return (((ptB[0] - ptA[0]) ** 2) + ((ptB[1] - ptA[0]) ** 2)) ** 0.5
 
 points['distance'] = points.apply(euclidean, axis = 1) # axis=1 : i am sending rows
 print(points)

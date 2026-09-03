@@ -201,7 +201,7 @@ print("",bolly_data,sep="\n")
 print(len(subs_data))
 print(type(subs_data))
 print(dir(subs_data))
-print(sorted(subs_data, reverse=True)) # stores in the list
+print(sorted(subs_data, reverse=True)) # stores in the list # sorts the values
 print(min(subs_data))
 print(max(subs_data))
 
