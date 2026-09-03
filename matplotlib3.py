@@ -100,7 +100,7 @@ fig.colorbar(p)
 z = xx**2 + yy**2
 fig = plt.figure()
 ax = plt.subplot() # contour plot is 2D
-p = ax.contourf(xx,yy,z,cmap="viridis")
+p = ax.contourf(xx,yy,z,cmap="viridis") # contourf
 fig.colorbar(p)
 
 
@@ -138,7 +138,7 @@ ax1.contourf(xx,yy,z)
 
 ##### Heat Map #####
 
-ball = pd.read_csv('datasets//IPL_Ball_by_Ball_2008_2022.csv')
+ball = pd.read_csv('datasets/IPL_Ball_by_Ball_2008_2022.csv')
 ball.sample(2)
 
 temp_df = ball[(ball['ballnumber'].isin([1,2,3,4,5,6]))  & (ball['batsman_run'] == 6)]

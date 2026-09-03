@@ -11,9 +11,9 @@ iris = pd.read_csv('datasets/iris.csv')
 iris.sample(5)
 
 def getSpeciesNum(species):
-  if species == "Iris-virginica" : return 2
-  elif species == "Iris-setosa" : return 0
-  elif species == "Iris-versicolor" : return 1
+    if species == "Iris-virginica" : return 2
+    elif species == "Iris-setosa" : return 0
+    elif species == "Iris-versicolor" : return 1
 
 iris['SpeciesNum'] = iris['Species'].apply(getSpeciesNum)
 
@@ -90,7 +90,7 @@ plt.figure(figsize=(18,10))
 plt.scatter(temp_df['avg'], temp_df['strike_rate'], s=temp_df['runs'])
 
 for i in range(temp_df.shape[0]):
-  plt.text(temp_df['avg'].values[i], temp_df['strike_rate'].values[i], temp_df['batter'].values[i])
+    plt.text(temp_df['avg'].values[i], temp_df['strike_rate'].values[i], temp_df['batter'].values[i])
 
 
 
@@ -241,11 +241,4 @@ ax3.hist(batter['avg'])
 
 
 
-
-
 ### continues in datavisualisation3.py
-
-
-
-
-

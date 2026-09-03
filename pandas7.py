@@ -91,8 +91,7 @@ print(t.stack())
 
 ### Multi index DF
 
-branch1 = pd.DataFrame(
-    [
+data = [
         [1,2],
         [3,4],
         [5,6],
@@ -101,7 +100,10 @@ branch1 = pd.DataFrame(
         [11,12],
         [13,14],
         [15,16],
-    ],
+    ]
+
+branch1 = pd.DataFrame(
+    data,
     index = multiIndex,
     columns = ['avg_package','students']
 )
@@ -338,7 +340,9 @@ print(df.groupby('sex')['total_bill'].mean())
 print(df.groupby(['sex','smoker'])['total_bill'].mean())
 print(df.groupby(['sex','smoker'])['total_bill'].mean().unstack())
 
-print(df.pivot_table(index='sex', columns='smoker', values='total_bill')) # same as above code
+# this code same as above line of code :
+print(df.pivot_table(index='sex', columns='smoker', values='total_bill')) 
+
 # default value of aggfunction is mean()
 
 print(df.pivot_table(index='sex', columns='smoker',values='total_bill', aggfunc='std'))
