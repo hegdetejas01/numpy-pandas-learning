@@ -54,8 +54,7 @@ sns.catplot(data=tips,x='sex',y='total_bill',kind='violin',col='day',row='time')
 
 g = sns.FacetGrid(data=tips,col='day',row='time',hue='smoker')
 g.map(sns.boxplot,'sex','total_bill')
-
-
+g.add_legend()
 
 
 
@@ -63,6 +62,7 @@ g.map(sns.boxplot,'sex','total_bill')
 
 # Plotting Pairwise Relationship (PairGrid Vs Pairplot)
 
+sns.pairplot(iris)
 sns.pairplot(iris,hue='species')
 
 # pair grid
@@ -71,6 +71,11 @@ g = sns.PairGrid(data=iris,hue='species')
 g.map(sns.scatterplot)
 
 # map_diag -> map_offdiag
+
+g = sns.PairGrid(iris, hue='species')
+g.map_diag(sns.histplot)
+g.map_offdiag(sns.scatterplot)
+
 g = sns.PairGrid(data=iris,hue='species')
 g.map_diag(sns.boxplot)
 g.map_offdiag(sns.histplot)
@@ -94,6 +99,10 @@ g.map_lower(sns.scatterplot)
 
 
 # JointGrid Vs Jointplot
+sns.jointplot(data=tips,x='total_bill',y='tip')
+
+# default kind parameter = scatter
+sns.jointplot(data=tips,x='total_bill',y='tip',kind='hist')
 
 sns.jointplot(data=tips,x='total_bill',y='tip',kind='hist',hue='sex')
 

@@ -100,7 +100,7 @@ fig.colorbar(p)
 z = xx**2 + yy**2
 fig = plt.figure()
 ax = plt.subplot() # contour plot is 2D
-p = ax.contourf(xx,yy,z,cmap="viridis") # contourf
+p = ax.contourf(xx,yy,z,cmap="viridis") # contourf - contour fill
 fig.colorbar(p)
 
 

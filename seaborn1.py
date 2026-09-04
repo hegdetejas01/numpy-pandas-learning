@@ -139,4 +139,3 @@ sns.relplot(data=gap, x='lifeExp', y='gdpPercap', kind='scatter', col='year')
 sns.relplot(data=gap, x='lifeExp', y='gdpPercap', kind='scatter', col='year', col_wrap=4) # got to next line after displaying 4 graphs
 
 # Continued in next file - datavisualisation5
-
